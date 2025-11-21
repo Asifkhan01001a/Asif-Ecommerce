@@ -15,15 +15,21 @@ import lombok.Setter;
 public class Review {
 
     @Id
+    @Column
     private int id;
 
     @Column
     private String comment;
 
+
     @Column
     private int rating;
 
     @ManyToOne
-            @JoinColumn(name = "customer_id")
+    @JoinColumn(name = "customer_id")
     Customer customer;
+
+    @ManyToOne
+    @JoinColumn(name = "product_id")
+    Product product;
 }

@@ -29,13 +29,12 @@ public class Customer {
     private int age;
 
 
-    @Column(unique = true)
-
+    @Column(unique = true,nullable = false)
     private String email;
 
     @Column
     @Enumerated(value = EnumType.STRING)
-    Gender gender=Gender.MALE;
+    private Gender gender;
 
     @Column(length = 10)
     private String mobileNo;

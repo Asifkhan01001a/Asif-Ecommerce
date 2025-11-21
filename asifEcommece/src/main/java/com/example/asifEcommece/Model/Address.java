@@ -15,7 +15,7 @@ import lombok.Setter;
 @Getter
 
 //agar naam change karna ho to good practise
-
+@Table(name="address")
 
 public class Address {
 
@@ -38,6 +38,6 @@ public class Address {
     //relationShip
 
     @OneToOne
-            @JoinColumn(name = "customer_id")
+    @JoinColumn(name = "customer_id")
     Customer customer;
 }

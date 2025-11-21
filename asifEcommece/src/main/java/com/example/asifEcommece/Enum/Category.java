@@ -1,8 +1,12 @@
 package com.example.asifEcommece.Enum;
 
 public enum Category {
-    FASHION,
+
     SPORTS,
+    FASHION,
+    FOOD,
+    TECHNOLOGY,
     ELECTRONICS,
+    SKINCARE
 
 }

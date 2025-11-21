@@ -23,19 +23,16 @@ public class Seller {
     @Column(length = 50)
     private String name;
 
-    @Column(unique = true,nullable = false)
-    private String email;
-
-    @Column
+    @Column(length = 10 ,unique = true)
     private String panNo;
 
     @Column
     private Double rating;
 
-    @Column
-    private int mobileNo;
+    @Column(unique = true,nullable = false)
+    private String email;
 
-    @OneToMany
+    @OneToMany(mappedBy = "seller")
     List<Product> products=new ArrayList<>();
 
 

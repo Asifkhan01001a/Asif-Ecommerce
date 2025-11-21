@@ -8,6 +8,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
@@ -27,11 +30,17 @@ public class Product {
     private String price;
 
     @Column
-//    @Enumerated()
+    @Enumerated(value = EnumType.STRING)
     Category category;
 
-    @ManyToMany
-            @JoinColumn(name = "seller")
+    @ManyToOne
+    @JoinColumn(name = "seller_id")
     Seller seller;
+
+    @OneToMany(mappedBy = "product")
+    List<Review> reviews = new ArrayList<>();
+
+    @ManyToMany(mappedBy = "products")
+    List<OrderEntity>orders=new ArrayList<>();
 }
 
