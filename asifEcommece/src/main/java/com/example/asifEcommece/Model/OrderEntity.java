@@ -10,12 +10,11 @@ import lombok.Setter;
 import java.util.ArrayList;
 import java.util.List;
 
-@Entity
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
-
+@Entity
 public class OrderEntity {
 
     @Id
@@ -23,13 +22,13 @@ public class OrderEntity {
     private int id;
 
     @Column
-    private int total;
+    private int value;
 
     @Column
     @Enumerated(value = EnumType.STRING)
-    private OrderStatus orderStatus;
+    OrderStatus orderStatus;
 
     @ManyToMany
-    @JoinTable
     List<Product>products=new ArrayList<>();
+
 }

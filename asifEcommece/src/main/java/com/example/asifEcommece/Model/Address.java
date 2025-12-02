@@ -6,24 +6,22 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-
-
-@Entity
-@NoArgsConstructor
 @AllArgsConstructor
-@Setter
+@NoArgsConstructor
 @Getter
-
-//agar naam change karna ho to good practise
-@Table(name="address")
-
+@Setter
+@Entity
 public class Address {
 
     @Id
+    @Column
     private int id;
 
     @Column
-    private String houseNo;
+    private int houseNo;
+
+    @Column
+    private String Street;
 
     @Column
     private String city;
@@ -32,10 +30,7 @@ public class Address {
     private String state;
 
     @Column
-    private int pin;
-
-    //unidirectional kis tarike ki relation
-    //relationShip
+    private int pinCode;
 
     @OneToOne
     @JoinColumn(name = "customer_id")

@@ -1,6 +1,5 @@
 package com.example.asifEcommece.Model;
 
-
 import com.example.asifEcommece.Enum.Category;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -11,12 +10,11 @@ import lombok.Setter;
 import java.util.ArrayList;
 import java.util.List;
 
-@Entity
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
-
+@Entity
 public class Product {
 
     @Id
@@ -27,7 +25,7 @@ public class Product {
     private String name;
 
     @Column
-    private String price;
+    private int price;
 
     @Column
     @Enumerated(value = EnumType.STRING)
@@ -37,10 +35,10 @@ public class Product {
     @JoinColumn(name = "seller_id")
     Seller seller;
 
-    @OneToMany(mappedBy = "product")
-    List<Review> reviews = new ArrayList<>();
+    @OneToMany
+    List<Review>reviews=new ArrayList<>();
 
-    @ManyToMany(mappedBy = "products")
+    @ManyToMany
     List<OrderEntity>orders=new ArrayList<>();
 }
 

@@ -1,23 +1,7 @@
 package com.example.asifEcommece.Controller;
 
 
-import com.example.asifEcommece.Service.ReviewService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
 
-@RestController
-@RequestMapping("/api/v1/review")
 public class ReviewController {
 
-    @Autowired
-    ReviewService reviewService;
-
-    @GetMapping
-    public ResponseEntity getReviewById(@RequestParam("id") int id){
-        return reviewService.getReviewById(id);
-    }
 }

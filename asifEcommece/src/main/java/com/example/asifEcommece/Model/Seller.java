@@ -1,6 +1,10 @@
 package com.example.asifEcommece.Model;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import jakarta.validation.constraints.Min;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -9,31 +13,28 @@ import lombok.Setter;
 import java.util.ArrayList;
 import java.util.List;
 
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @Getter
 @Setter
-
 @Entity
 public class Seller {
 
     @Id
-    private int sellerId;
-
-    @Column(length = 50)
-    private String name;
-
-    @Column(length = 10 ,unique = true)
-    private String panNo;
+    @Column
+    private int id;
 
     @Column
-    private Double rating;
+    private String name;
 
-    @Column(unique = true,nullable = false)
-    private String email;
+    @Column
+    private String city;
 
-    @OneToMany(mappedBy = "seller")
-    List<Product> products=new ArrayList<>();
+    @Column
+    @Min(value = 10)
+    private String panNo;
 
+    @OneToMany(mappedBy = "seller" )
+    List<Product>products=new ArrayList<>();
 
 }
