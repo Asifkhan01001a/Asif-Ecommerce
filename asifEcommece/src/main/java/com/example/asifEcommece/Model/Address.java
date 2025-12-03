@@ -14,7 +14,7 @@ import lombok.Setter;
 public class Address {
 
     @Id
-    @Column
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @Column

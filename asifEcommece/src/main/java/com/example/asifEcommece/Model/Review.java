@@ -1,6 +1,7 @@
 package com.example.asifEcommece.Model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
@@ -17,7 +18,7 @@ import lombok.Setter;
 public class Review {
 
         @Id
-        @Column
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
         private int id;
 
         @Column
@@ -34,5 +35,6 @@ public class Review {
 
         @ManyToOne
         @JoinColumn(name = "product_id")
+        @JsonIgnore
         Product product;
 }

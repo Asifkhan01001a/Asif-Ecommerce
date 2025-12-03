@@ -1,16 +1,16 @@
 package com.example.asifEcommece.Model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.Min;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @AllArgsConstructor
@@ -21,7 +21,7 @@ import java.util.List;
 public class Seller {
 
     @Id
-    @Column
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @Column
@@ -30,11 +30,14 @@ public class Seller {
     @Column
     private String city;
 
+    @CreationTimestamp
+    Date atCreated;
+
     @Column
-    @Min(value = 10)
     private String panNo;
 
     @OneToMany(mappedBy = "seller" )
+    @JsonIgnore
     List<Product>products=new ArrayList<>();
 
 }
