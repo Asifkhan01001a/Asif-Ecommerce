@@ -2,6 +2,8 @@ package com.example.asifEcommece.Controller;
 
 import com.example.asifEcommece.Model.Customer;
 import com.example.asifEcommece.Service.CustomerService;
+import com.example.asifEcommece.dto.Reponse.CustomerResponse;
+import com.example.asifEcommece.dto.Request.CustomerRequest;
 import lombok.Getter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,16 +21,17 @@ public class CustomerController {
     CustomerService customerService;
 
     @PostMapping
-    public ResponseEntity addCustomer(@RequestBody Customer customer){
-        log.info("the object is " + customer);
-        Customer savedCustomer= customerService.addCustomer(customer);
-        return new ResponseEntity(savedCustomer,HttpStatus.CREATED);
+    public ResponseEntity addCustomer(@RequestBody CustomerRequest customerRequest){
+        log.info("the object is " + customerRequest);
+
+        CustomerResponse customerResponse = customerService.addCustomer(customerRequest);
+        return new ResponseEntity(customerResponse,HttpStatus.CREATED);
     }
 
     @GetMapping
     public ResponseEntity getCustomer(@RequestParam("id") int id){
         try{
-            Customer getCustomerById = customerService.getCustomer(id);
+            CustomerResponse getCustomerById = customerService.getCustomer(id);
             return new ResponseEntity<>(getCustomerById,HttpStatus.FOUND);
         }
         catch (Exception e){

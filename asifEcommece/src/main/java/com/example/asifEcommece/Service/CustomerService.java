@@ -4,6 +4,9 @@ package com.example.asifEcommece.Service;
 import com.example.asifEcommece.Exception.CustomerNotFoundException;
 import com.example.asifEcommece.Model.Customer;
 import com.example.asifEcommece.Repository_DAO.CustomerRepository;
+import com.example.asifEcommece.Transformer.CustomerTransformer;
+import com.example.asifEcommece.dto.Reponse.CustomerResponse;
+import com.example.asifEcommece.dto.Request.CustomerRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.stereotype.Service;
@@ -16,21 +19,29 @@ public class CustomerService {
     @Autowired
     CustomerRepository customerRepository;
 
+    @Autowired
+    CustomerTransformer customerTransformer;
 
-    public Customer addCustomer(Customer customer) {
+    public CustomerResponse addCustomer(CustomerRequest customerRequest) {
 
+        //Step 1
+        Customer customer=customerTransformer.customerRequestToCustomer(customerRequest);
+        //Step 2
         Customer addedCustomer = customerRepository.save(customer);
-        return addedCustomer;
+        //Step 3
+        return customerTransformer.customerToCustomerResponce(addedCustomer);
+
 
     }
 
-    public Customer getCustomer(int id) {
+    public CustomerResponse getCustomer(int id) {
         Optional<Customer>optionalCustomer = customerRepository.findById(id);
         if(optionalCustomer.isEmpty()){
             throw new CustomerNotFoundException("id " + id + " is not found");
         }
+        return customerTransformer.customerToCustomerResponce(optionalCustomer.get());
 
-        Customer customer = optionalCustomer.get();
-        return customer;
     }
+
+
 }
