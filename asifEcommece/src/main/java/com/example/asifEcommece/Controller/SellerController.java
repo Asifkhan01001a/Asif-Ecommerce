@@ -3,6 +3,7 @@ package com.example.asifEcommece.Controller;
 
 import com.example.asifEcommece.Model.Seller;
 import com.example.asifEcommece.Service.SellerService;
+import com.example.asifEcommece.dto.Request.SellerRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,8 +20,8 @@ public class SellerController {
     SellerService sellerService;
 
     @PostMapping
-    public ResponseEntity addSeller(@RequestBody Seller seller){
-      return new ResponseEntity(sellerService.addSeller(seller), HttpStatus.CREATED);
+    public ResponseEntity addSeller(@RequestBody SellerRequest sellerRequest){
+      return new ResponseEntity(sellerService.addSeller(sellerRequest), HttpStatus.CREATED);
     }
 
 
