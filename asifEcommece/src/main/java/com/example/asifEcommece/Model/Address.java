@@ -1,16 +1,14 @@
 package com.example.asifEcommece.Model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
 @Entity
+@Builder
 public class Address {
 
     @Id
@@ -20,8 +18,6 @@ public class Address {
     @Column
     private int houseNo;
 
-    @Column
-    private String Street;
 
     @Column
     private String city;

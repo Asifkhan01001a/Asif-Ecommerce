@@ -1,5 +1,6 @@
 package com.example.asifEcommece.Controller;
 
+import com.example.asifEcommece.Annotaion.PrintHello;
 import com.example.asifEcommece.Model.Customer;
 import com.example.asifEcommece.Service.CustomerService;
 import com.example.asifEcommece.dto.Reponse.CustomerResponse;
@@ -21,6 +22,7 @@ public class CustomerController {
     CustomerService customerService;
 
     @PostMapping
+    @PrintHello
     public ResponseEntity addCustomer(@RequestBody CustomerRequest customerRequest){
         log.info("the object is " + customerRequest);
 

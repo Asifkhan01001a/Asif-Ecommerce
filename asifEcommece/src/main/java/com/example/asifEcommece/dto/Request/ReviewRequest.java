@@ -10,8 +10,8 @@ import lombok.*;
 
 public class ReviewRequest {
 
-        private String reviewRequest;
+        private String reviewComment;
 
-        private int ratingRequest;
+        private int rating;
 
 }

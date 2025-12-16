@@ -3,13 +3,11 @@ package com.example.asifEcommece.Controller;
 
 import com.example.asifEcommece.Model.Review;
 import com.example.asifEcommece.Service.ReviewService;
+import com.example.asifEcommece.dto.Request.ReviewRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 
 @RestController
@@ -18,6 +16,20 @@ public class ReviewController {
     @Autowired
     ReviewService reviewService;
 
+
+    @PostMapping
+    public ResponseEntity addReview(@RequestParam("c-id") int customerId,
+                                    @RequestParam("p-id") int productId,
+                                    @RequestBody ReviewRequest reviewRequest){
+        try{
+            return new ResponseEntity(reviewService.addReview(customerId,productId,reviewRequest),HttpStatus.CREATED);
+        }
+        catch(Exception e){
+            return new ResponseEntity(e.getMessage(),HttpStatus.NOT_FOUND);
+        }
+
+    }
+
     @GetMapping
     public ResponseEntity getReview(@RequestParam("id") int id){
         try{
@@ -25,7 +37,6 @@ public class ReviewController {
         }
         catch (Exception e){
             return new ResponseEntity(e.getMessage(),HttpStatus.BAD_REQUEST);
-        }
-
+        }    
     }
 }

@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class CustomerTransformer {
 
-    public Customer customerRequestToCustomer(CustomerRequest customerRequest){
+    public static Customer customerRequestToCustomer(CustomerRequest customerRequest){
         return Customer.builder()
                 .name(customerRequest.getName())
                 .age(customerRequest.getAge())
@@ -18,7 +18,7 @@ public class CustomerTransformer {
                 .build();
     }
 
-    public CustomerResponse customerToCustomerResponce(Customer customer){
+    public static CustomerResponse customerToCustomerResponce(Customer customer){
         return CustomerResponse.builder()
                 .name(customer.getName())
                 .email(customer.getEmail())
