@@ -34,7 +34,7 @@ public class Customer {
         private String email;
 
         @Column
-        private int mobNo;
+        private String mobNo;
 
         @CreationTimestamp
         Date createdAt;

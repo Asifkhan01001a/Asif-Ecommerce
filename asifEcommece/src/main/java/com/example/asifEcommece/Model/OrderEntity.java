@@ -28,6 +28,10 @@ public class OrderEntity {
     @Enumerated(value = EnumType.STRING)
     OrderStatus orderStatus;
 
+    @ManyToOne
+    @JoinColumn(name = "customer_id")
+    Customer customer;
+
     @ManyToMany
     List<Product>products=new ArrayList<>();
 

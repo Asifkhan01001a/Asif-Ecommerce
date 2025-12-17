@@ -18,6 +18,6 @@ public class CustomerRequest {
 
     private String email;
 
-    private int mobNo;
+    private String mobNo;
 
 }
